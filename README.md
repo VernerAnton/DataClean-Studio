@@ -38,3 +38,8 @@ A client-side-first data cleaning and Salesforce import assistant built with Rea
 - Errors surface inline, preventing navigation to the next step until resolved.
 
 See `DataClean_Studio_Design.md` for the full project plan and how Step 1 hands off to the cleaning grid.
+
+## Merge conflict tips
+- If you see conflict markers (<<<<<<< / ======= / >>>>>>>), keep the sections that document available scripts and the column type inference notes for uploads.
+- Ensure `package.json` preserves the `test` and `typecheck` scripts alongside `dev`, `build`, and `preview` when resolving conflicts.
+- Keep the column type definitions in `src/types/data.ts` aligned with the parsing utility so uploads retain inferred metadata for later validation.
