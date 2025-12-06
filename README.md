@@ -13,6 +13,13 @@ A client-side-first data cleaning and Salesforce import assistant built with Rea
    npm run dev
    ```
 
+## Available scripts
+- `npm run dev` — start the Vite dev server.
+- `npm run build` — create a production build.
+- `npm run preview` — preview the production build locally.
+- `npm test` — run the Vitest suite.
+- `npm run typecheck` — run a type-only check with `tsc --noEmit`.
+
 ## Testing
 - Run the unit tests:
   ```bash

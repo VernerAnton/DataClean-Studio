@@ -2,7 +2,7 @@ import Papa from 'papaparse';
 import * as XLSX from 'xlsx';
 import type { ColumnDefinition, ColumnType, DataRow } from '../types/data';
 
-interface ParsedResult {
+export interface ParsedResult {
   rows: DataRow[];
   columns: ColumnDefinition[];
 }
