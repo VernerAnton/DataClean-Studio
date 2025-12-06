@@ -1,15 +1,29 @@
 import Papa from 'papaparse';
 import * as XLSX from 'xlsx';
-import type { ColumnDefinition, DataRow } from '../types/data';
+import type { ColumnDefinition, ColumnType, DataRow } from '../types/data';
 
 interface ParsedResult {
   rows: DataRow[];
   columns: ColumnDefinition[];
 }
 
+const inferColumnType = (value: unknown): ColumnType => {
+  if (value === null) return 'null';
+  if (value instanceof Date) return 'date';
+  const valueType = typeof value;
+  if (valueType === 'string') return 'string';
+  if (valueType === 'number') return 'number';
+  if (valueType === 'boolean') return 'boolean';
+  return 'unknown';
+};
+
 const normalizeColumns = (rows: DataRow[]): ColumnDefinition[] => {
-  const firstRow = rows[0] ?? {};
-  return Object.keys(firstRow).map((key) => ({ id: key, label: key }));
+  const firstRow = rows.find((row) => Object.keys(row).length > 0) ?? {};
+  return Object.keys(firstRow).map((key) => ({
+    id: key,
+    label: key,
+    type: inferColumnType(firstRow[key]),
+  }));
 };
 
 const parseCsvFile = (file: File): Promise<ParsedResult> =>

@@ -13,8 +13,8 @@ describe('useDataStore', () => {
 
     const rows = [{ id: '1', name: 'Alice' }];
     const columns = [
-      { id: 'id', label: 'id', required: true },
-      { id: 'name', label: 'name', required: false },
+      { id: 'id', label: 'id', type: 'string', required: true },
+      { id: 'name', label: 'name', type: 'string', required: false },
     ];
 
     useDataStore.getState().setData(rows, columns);
